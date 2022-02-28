@@ -1,6 +1,5 @@
 '''
-1.
-1.1 Import the libraries that will be used
+1. Import the libraries that will be used
 '''
 import pandas as pd
 import numpy as np
