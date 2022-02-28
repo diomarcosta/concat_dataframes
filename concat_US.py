@@ -6,50 +6,51 @@ import pandas as pd
 import numpy as np
 
 '''
-LEIA OU CRIE UM DATAFRAME. NESTE CASO ESTOU CRIANDO. SE CASO FOR LER, OS DADOS E AS COLUNAS SERÃO IMPORTADAS DO DATAFRAME LIDO.
+Read or create a dataframe. In this case, i'm creating. If read, the data and columns will be imported of readed dataframe
 
-2. Crie os dados do dataframe como array do numpy
-2.1 Os dados podem ser variáveis e/ou strings
-2.2 Se os dados forem variáveis, declarar antes
-2.3 O array teve ter o mesmo tamanho da quantidade de colunas do segundo dataframe
+2. Create the data of first dataframe with array of numpy
+2.1 the data can be variables and/or fixed. If variables, declare before
+The array need to have the same columns quantity of the second one
 '''
 
-valor_2 = 'valor_col2x'
-dados_do_df1 = np.array(['valor_col1x', valor_2, 'valor_col3x', '', ''])
+value_2 = 'value_col2x'
+data_of_df1 = np.array(['value_col1x', value_2, 'value_col3x', '', ''])
 
 '''
-3. Crie o primeiro dataframe com o dados do df1 e as colunas do segundo dataframe
-3.1 Estas colunas servirão de headers para que o segundo dataframe se encaixe
-3.2 Num primeiro momento, as colunas não terão relação com os dados, pois elas pertecem ao segundo dataframe
-3.3 Lembrando que os dados_do_dataframe devem ter a mesma quantidade de colunas que o segundo dataframe
-Ex.: Se o segundo dataframe tiver 5 colunas, deve-se acrescentar valores em branco para que o pandas concatene, sendo assim
-dados_do_df1 = np.array(['valor_'1, valor_2, 'valor_3', '',''])
-df1 = pd.DataFrame(data=[dados_do_df1], columns=['col_1', 'col_2', 'col_3', 'col_4', 'col_5])
-IMPORTANTE = Ficar atento a quantidade de colunas que o segundo dataframe tem para criar no primeiro e o concat funcionar
-Essa metodologia serve tanto para dataframes com colunas de nomes diferentes quanto para dataframes com quantidade de colunas diferentes
-'''
-df1 = pd.DataFrame(data=[dados_do_df1], columns=['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y'])
+3. Create the first dataframe with the first data and the second dataframe columns
+3.1 That columns will serv as headers for the second dataframe concat with the first
+3.2 At first, the columns will not be related to the data, as they belong to the second dataframe
+3.3 Remember, the data_of_df1 need to have the same quantity of columns of the second dataframe
 
-#4. Crie uma linha para servir de cabeçalho para o primeiro dataframe
+Ex.: If the second dataframe has 5 columns, you must add blank values for pandas to concatenate, so
+  df1_data = np.array(['value_'1, value_2, 'value_3', '',''])
+  df1 = pd.DataFrame(data=[data_do_df1], columns=['col_1', 'col_2', 'col_3', 'col_4', 'col_5])
+  
+IMPORTANT = Be aware of the number of columns that the second dataframe has to create in the first and concat works
+This methodology works both for dataframes with columns with different names and for dataframes with different numbers of columns.
+'''
+df1 = pd.DataFrame(data=[data_do_df1], columns=['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y'])
+
+#4. Crie uma linha para servir de cabeçalho para o primeiro dataframe / Create a line to serve as a header for the first dataframe
 
 df1.loc[-1] = ['col_1x', 'col_2x', 'col_3x', '', '']
-#8. Re-organize as linhas pelo index
-df1.index = df1.index + 1  # shifting index
+#5. Re-arrange the rows by index
+df1.index = df1.index + 1  # Shifting index
 df1 = df1.sort_index()
 
-# criando 2 linhas em branco (se desejar) e o cabeçalho do 2º dataframe 
+#6. Create 2 blanks rows (if you wish, to separate the two dataframes) and the header for the second dataframe 
 df1.loc[len(df1)] = ['', '', '', '', '']
 df1.loc[len(df1)] = ['', '', '', '', '']
 df1.loc[len(df1)] = ['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y']
 
-#crie ou importe o segundo dataframe, neste caso estarei criando
-#lembre que as colunas do df2 são iguais as colunas do df1. A primeira linha do df1 são as colunas dele
-dados_do_df2 = np.array(['valor_col_y1', 'valor_col_2y', 'valor_col_3y', 'valor_col_4y', 'valor_col_5y'])
-df2 = pd.DataFrame(data=[dados_do_df2], columns=['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y'])
+#7. Create or import the second dataframe, in this case I'll be creating
+# Remember, the columns of df2 is equals of df1 columns and the first row of df1 is its columns.
+data_of_df2 = np.array(['value_col_y1', 'value_col_2y', 'value_col_3y', 'value_col_4y', 'value_col_5y'])
+df2 = pd.DataFrame(data=[data_of_df2], columns=['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y'])
 
-#concatene os dois dataframes
-#pode-se criar um novo ou simplesmente substituir um existente
+#8. Concat both Dataframes
+#You can create another one or just replace with a existing Dataframe
 df1 = pd.concat ([df1,df2])
 
-#Visto que os dois dataframes já foram concatenados, basta apenas exportar para o excel tirando os index e os headers. Colocar a extensão .xlsx no final do nome do arquivo
+#9. After concat, just export to excel taking of all of the index and the headers. Put the .xlsx extension in the end of name
 df1.to_excel('Concatenado.xlsx', index=False, header=None)
