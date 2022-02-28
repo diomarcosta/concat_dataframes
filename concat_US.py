@@ -26,12 +26,12 @@ Ex.: If the second dataframe has 5 columns, you must add blank values for pandas
   df1_data = np.array(['value_'1, value_2, 'value_3', '',''])
   df1 = pd.DataFrame(data=[data_do_df1], columns=['col_1', 'col_2', 'col_3', 'col_4', 'col_5])
   
-IMPORTANT = Be aware of the number of columns that the second dataframe has to create in the first and concat works
+IMPORTANT = Be aware of the number of columns that the second dataframe has, to create in the first and concat works
 This methodology works both for dataframes with columns with different names and for dataframes with different numbers of columns.
 '''
-df1 = pd.DataFrame(data=[data_do_df1], columns=['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y'])
+df1 = pd.DataFrame(data=[data_of_df1], columns=['col_1y', 'col_2y', 'col_3y', 'col_4y', 'col_5y'])
 
-#4. Crie uma linha para servir de cabeçalho para o primeiro dataframe / Create a line to serve as a header for the first dataframe
+#4. Create a line to serve as a header for the first dataframe
 
 df1.loc[-1] = ['col_1x', 'col_2x', 'col_3x', '', '']
 #5. Re-arrange the rows by index
