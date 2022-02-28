@@ -1,6 +1,5 @@
 '''
-1.
-1.1 Importe as biblioteca que serão usadas
+1. Importe as biblioteca que serão usadas
 '''
 import pandas as pd
 import numpy as np
